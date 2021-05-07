@@ -1,0 +1,8 @@
+#### cherry pick
+git checkout 2369-malaria-map-overlay
+git reset --hard origin 2362-loa-eoc-visuals
+git cherry-pick 740a085 64ab1f6 c23dfd0 f9dc909 1296246 7709d94
+git push --force origin 2369-malaria-map-overlay
+
+#### github image resize
+<img src="https://camo.githubusercontent.com/..." width="500" />
