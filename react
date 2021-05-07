@@ -11,11 +11,23 @@ function useLocalStorageState(key, defaultValue = '') {
   const [state, setState] = React.useState(
     () => window.localStorage.getItem(key) || defaultValue,
   )
-
   return [state, setState];
 }
-
 function Greeting({initialName}) {
   const [name, setName] = useLocalStorageState('name', initialName);
 }
+
+#### useRef
+// useRef should be used when you want to have a piece of information that 
+// persists "for the full lifetime of the component" 
+const prevKeyPref = React.useRef(key);
+React.useEffect(()=>{
+  const prevKey = prevKeyPref.current; // old key
+  const prevKeyPref.current =  newKey; // update key
+});
+
+#### useRef vs useState
+// Use useRef when you need information that is available regardless of 
+// component lifecycle and whose changes should NOT trigger rerender. 
+// Use useState for information whose changes should trigger rerenders.
 
