@@ -1,0 +1,5 @@
+#### lazy state initialisation
+const [name, setName] = React.useState(
+  () => window.localStorage.getItem('name') || initialName,
+)
+// It will not call localStorage every time.
