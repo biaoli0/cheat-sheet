@@ -3,3 +3,19 @@ const [name, setName] = React.useState(
   () => window.localStorage.getItem('name') || initialName,
 )
 // It will not call localStorage every time.
+
+#### custom hooks
+// With prefix 'use' it will not be complained by React convention and Eslint, but that doesn't make 
+// the feature any different.
+function useLocalStorageState(key, defaultValue = '') {
+  const [state, setState] = React.useState(
+    () => window.localStorage.getItem(key) || defaultValue,
+  )
+
+  return [state, setState];
+}
+
+function Greeting({initialName}) {
+  const [name, setName] = useLocalStorageState('name', initialName);
+}
+
