@@ -1,0 +1,33 @@
+### regexp_replace 
+    await db.runSql(`
+      update "dashboardReport" dr
+      set "dataBuilderConfig" = regexp_replace(dr."dataBuilderConfig"::text, '\\"valueOfInterest\\"\\: \\"Yes\\"','"valueOfInterest": 1','g')::jsonb
+      where id = '${id}'
+  `);
+
+### add item to array
+UPDATE table1 SET integer_array = integer_array || '{10}';
+UPDATE table1 SET integer_array = integer_array || '{10, 11, 12}';
+
+### find the same data elements for mock data  
+select * from answer a
+join question q on a.question_id = q.id
+join data_source ds on q.data_source_id = ds.id
+where ds."service_type" = 'tupaia' and
+a."type" = 'Number' and
+survey_response_id in (select sr.id from survey_response sr
+where entity_id in (select e2.id from entity e2
+join entity e on e2.parent_id = e.id
+join entity e3 on e.parent_id = e3.id
+where e3.name ='Fiji' and e2."type" = 'facility'))
+
+### find questions from survey via screen components
+SELECT q.*  FROM question q
+JOIN survey_screen_component scc ON scc.question_id = q.id
+JOIN survey_screen sc ON sc.id = scc.screen_id
+
+### find auth config location
+SHOW hba_file;
+
+### reload config file
+SELECT pg_reload_conf();
