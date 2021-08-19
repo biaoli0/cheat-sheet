@@ -5,6 +5,11 @@
       where id = '${id}'
   `);
 
+### add element into JSON
+UPDATE <table>
+SET <field-name> = <field-name> || '{"a": 1}'::jsonb
+WHERE id = <some id>
+
 ### add item to array
   UPDATE table1 SET integer_array = integer_array || '{10}';
   UPDATE table1 SET integer_array = integer_array || '{10, 11, 12}';
@@ -36,3 +41,16 @@
 
 ### reload config file
   SELECT pg_reload_conf();
+
+### add report for testing indicator
+  await insertObject(db, 'report', {
+    id: generateId(),
+    code: 'TEST',
+    config: {
+      fetch: {
+        dataElements: ['FluTracker_LGA_Percent_First_Nations_ILI'],
+      },
+      transform: [],
+    },
+    permission_group_id: '59085f2dfc6a0715dae508e1',
+  });

@@ -6,3 +6,32 @@ git push --force origin 2369-malaria-map-overlay
 
 #### github image resize
 <img src="https://camo.githubusercontent.com/..." width="500" />
+
+#### comment table
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
+
+| First Header  | 
+| ------------- | 
+| Content Cell  | 
+| Content Cell  | 
+
+#### rename branch
+git checkout <old_name>
+git branch -m <new_name>
+git push origin -u <new_name>
+git push origin --delete <old_name>
+
+#### revert to previous commit
+# Resets index to former commit; replace '56e05fced' with your commit code
+git reset 56e05fced 
+
+# Moves pointer back to previous HEAD
+git reset --soft HEAD@{1}
+
+git commit -m "Revert to 56e05fced"
+
+# Updates working copy to reflect the new commit
+git reset --hard
