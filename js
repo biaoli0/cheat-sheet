@@ -5,3 +5,5 @@
 isNaN(), this function determines whether a value is an illegal number (Not-a-Number).
 
 test
+
+test 2
